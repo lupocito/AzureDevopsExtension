@@ -1,0 +1,71 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+    "id": "16b6468b-ac17-425f-89af-106b59d03134",
+    "name": "MyAnsibleExtension",
+    "friendlyName": "My Ansible Extension",
+    "description": "Oh my lord, Ansible Extension",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "author": "David Duque",
+    "version": {
+        "Major": 0,
+        "Minor": 0,
+        "Patch": 1
+    },
+    "instanceNameFormat": "Ansible",
+    "inputs": [
+        {
+            "name": "connectedServiceNameARM",
+            "aliases": [
+                "azureSubscription"
+            ],
+            "type": "connectedService:AzureRM",
+            "label": "Azure subscription",
+            "required": true,
+            "helpMarkDown": "Select an Azure resource manager subscription for the deployment",
+            "properties": {
+                "EndpointFilterRule": "ScopeLevel != ManagementGroup"
+            }
+        },
+        {
+            "name": "action",
+            "type": "pickList",
+            "label": "Action",
+            "defaultValue": "create",
+            "required": true,
+            "helpMarkDown": "Action to launch Ansible.",
+            "options": {
+                "create": "Create",
+                "list": "List",
+                "delete": "Delete"
+            }
+        },
+        {
+            "name": "secret",
+            "aliases": [
+                "secrets"
+            ],
+            "type": "string",
+            "label": "Secrets",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Arguments passed to the script"
+        },
+        {
+            "name": "cwd",
+            "aliases": [
+                "workingDirectory"
+            ],
+            "type": "filePath",
+            "label": "Working Directory",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Current working directory where the script is run.  Empty is the root of the repo (build) or artifacts (release), which is $(System.DefaultWorkingDirectory)"
+        }
+    ],
+    "execution": {
+        "Node10": {
+            "target": "index.js"
+        }
+    }
+}

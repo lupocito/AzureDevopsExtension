@@ -1,0 +1,36 @@
+{
+    "manifestVersion": 1,
+    "id": "16b6468b-ac17-425f-89af-106b59d03134",
+    "name": "My Ansible Extension",
+    "version": "0.0.1",
+    "publisher": "DavidDuque",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "My Ansible Extension",
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "ansible_extension"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "16b6468b-ac17-425f-89af-106b59d03134",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "ansible_extension"
+            }
+        }
+    ]
+}
